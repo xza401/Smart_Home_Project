@@ -1,0 +1,3 @@
+# Smart Home System
+
+This project is a class-based React application for managing a smart home system...

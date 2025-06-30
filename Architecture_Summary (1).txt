@@ -1,0 +1,95 @@
+SMART HOME SYSTEM – ARCHITECTURE SUMMARY
+
+=====================================
+COMPONENT STRUCTURE
+=====================================
+
+AppClass.jsx
+- Root component of the application.
+- Handles user login and conditionally renders the Dashboard based on login state.
+
+DashboardClass.jsx
+- Main interface after login.
+- Provides access to all user features and embedded controls.
+
+DeviceControlClass.jsx
+- Allows users to view and manage smart devices (e.g., status, name, location).
+- Acts as a hub for device interaction.
+
+RoutineManagerClass.jsx
+- Provides a UI for creating, viewing, and deleting smart routines.
+- Ties routines to time, devices, and actions.
+
+LockDoorClass.jsx
+- UI for locking/unlocking smart doors.
+- Displays current lock status and interacts with device services.
+
+SetCurtainsClass.jsx
+- Lets users open or close smart curtains or set custom percentages.
+- Syncs with device status for feedback.
+
+CheckWindowsClass.jsx
+- Displays open/closed state of smart windows.
+- Alerts user if unable to connect to device.
+
+LightControlClass.jsx
+- Turns lights on/off and adjusts brightness or color (if supported).
+- Maps to smart bulbs or lighting zones.
+
+AlertPanelClass.jsx
+- Displays system-wide alerts (e.g., intrusion detection).
+- Can pull recent events or real-time warnings.
+
+=====================================
+MODELS
+=====================================
+
+User.js
+- Encapsulates user data (id, name, role, status).
+- Includes permission checking logic.
+
+Device.js
+- Represents a smart device (door, curtain, etc.) with id, name, type, and room reference.
+
+Routine.js
+- Represents a time-based automated task linked to a user and device.
+
+Room.js
+- Logical grouping of devices with a shared status (e.g., Living Room).
+
+Permission.js
+- Stores permission type/value per user.
+
+=====================================
+SERVICES
+=====================================
+
+UserService.js
+- Create, retrieve, and manage user profiles.
+
+DeviceService.js
+- Retrieve list of devices and update individual device statuses.
+
+RoutineService.js
+- Manage user-specific routines.
+
+RoomService.js
+- Fetch and update room information and current status.
+
+PermissionService.js
+- Handle CRUD operations on user permissions.
+
+=====================================
+DATABASE SCHEMA (schema.sql)
+=====================================
+
+Tables:
+- Users (id, name, role, status)
+- Devices (id, name, type, room_id)
+- DeviceStatus (device_id, status, last_updated)
+- Permissions (id, user_id, permission_type, value)
+- Rooms (id, name, current_status)
+- Routines (id, user_id, schedule, device_id, action)
+- Backups, Maintenance (for admin operations)
+
+Each table maps directly to at least one model and is accessed via services.
