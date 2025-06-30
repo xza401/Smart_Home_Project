@@ -1,0 +1,1 @@
+// Simulated DB interface using in-memory arrays.
